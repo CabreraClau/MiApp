@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notas-deployment-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notas1
+  template:
+    metadata:
+      labels:
+        app: notas1
+    spec:
+      containers:
+      - name: notas-api
+        image: notas-api:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: TITLE
+          valueFrom:
+            configMapKeyRef:
+              name: notas-config
+              key: TITLE_1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notas-deployment-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notas2
+  template:
+    metadata:
+      labels:
+        app: notas2
+    spec:
+      containers:
+      - name: notas-api
+        image: notas-api:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: TITLE
+          valueFrom:
+            configMapKeyRef:
+              name: notas-config
+              key: TITLE_2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notas-deployment-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notas3
+  template:
+    metadata:
+      labels:
+        app: notas3
+    spec:
+      containers:
+      - name: notas-api
+        image: notas-api:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: TITLE
+          valueFrom:
+            configMapKeyRef:
+              name: notas-config
+              key: TITLE_3

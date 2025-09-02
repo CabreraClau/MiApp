@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notas-config
+data:
+  TITLE_1: "API de notas - Instancia 1"
+  TITLE_2: "API de notas - Instancia 2"
+  TITLE_3: "API de notas - Instancia 3"
